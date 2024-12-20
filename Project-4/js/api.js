@@ -21,4 +21,16 @@ async function fetchData(userInput) {
   }
   
   export { fetchData };
+  async function fetchMeaningCloudData(text) {
+    const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+    const url = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=en&txt=${text}`;
   
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      // Process the data from the response
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
