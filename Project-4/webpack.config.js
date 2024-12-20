@@ -38,3 +38,14 @@ module.exports = {
     port: 3000,
   },
 };
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      `...`,
+      new CssMinimizerPlugin(),
+    ],
+  },
+};
