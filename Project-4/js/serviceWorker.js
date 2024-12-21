@@ -5,7 +5,7 @@ self.addEventListener("install", (event) => {
   console.log("Service Worker installed");
 });
 
-registerRoute(
+self.registerRoute( // Corrected line
   ({ request }) => request.destination === "document",
   new StaleWhileRevalidate()
 );

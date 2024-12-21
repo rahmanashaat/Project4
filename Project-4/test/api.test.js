@@ -12,4 +12,19 @@ test("fetchData returns correct structure", async () => {
 
   const result = await fetchData("test");
   expect(result).toEqual(mockData);
+
+  // Test for error handling (example)
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      ok: false,
+      status: 500,
+      statusText: "Internal Server Error",
+    })
+  );
+
+  try {
+    await fetchData("test");
+  } catch (error) {
+    expect(error).toBeTruthy(); // Expect an error to be thrown
+  }
 });

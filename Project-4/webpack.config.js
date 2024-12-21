@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   entry: "./src/js/index.js",
@@ -37,14 +38,10 @@ module.exports = {
     static: "./dist",
     port: 3000,
   },
-};
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
-module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      `...`,
+      // Note that `...` is not necessary here
       new CssMinimizerPlugin(),
     ],
   },
