@@ -28,3 +28,8 @@ test("fetchData returns correct structure", async () => {
     expect(error).toBeTruthy(); // Expect an error to be thrown
   }
 });
+// Assuming you have a function 'add(a, b)' in your JS file
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(add(1, 2)).toBe(3);
+});
