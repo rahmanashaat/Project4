@@ -1,8 +1,10 @@
 import { fetchData } from "../js/api";
 
+// Mocking the fetchData function to test API response handling
 test("fetchData returns correct structure", async () => {
   const mockData = { polarity: "positive", confidence: 0.9, text: "Test text" };
 
+  // Mock the global fetch method to simulate API response
   global.fetch = jest.fn(() =>
     Promise.resolve({
       ok: true,
@@ -10,10 +12,11 @@ test("fetchData returns correct structure", async () => {
     })
   );
 
+  // Test: Successful API response
   const result = await fetchData("test");
   expect(result).toEqual(mockData);
 
-  // Test for error handling (example)
+  // Test: API error response
   global.fetch = jest.fn(() =>
     Promise.resolve({
       ok: false,
@@ -22,14 +25,18 @@ test("fetchData returns correct structure", async () => {
     })
   );
 
-  try {
-    await fetchData("test");
-  } catch (error) {
-    expect(error).toBeTruthy(); // Expect an error to be thrown
-  }
+  // Catching and validating the error thrown by fetchData
+  await expect(fetchData("test")).rejects.toThrow(
+    "Error: API Error (500): Internal Server Error"
+  );
 });
-// Assuming you have a function 'add(a, b)' in your JS file
 
-test('adds 1 + 2 to equal 3', () => {
+// Test for the 'add' function
+// Assuming you have a function 'add(a, b)' in your JS file
+function add(a, b) {
+  return a + b;
+}
+
+test("adds 1 + 2 to equal 3", () => {
   expect(add(1, 2)).toBe(3);
 });

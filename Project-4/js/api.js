@@ -1,4 +1,4 @@
-// Function to fetch generic API data
+// Define the fetchData function to interact with the API
 async function fetchData(userInput) {
   const API_URL = `https://api.example.com/data?query=${encodeURIComponent(userInput)}`; // Ensure proper encoding
 
@@ -54,4 +54,5 @@ async function fetchMeaningCloudData(text) {
   }
 }
 
+// Export the functions for use in other modules
 export { fetchData, fetchMeaningCloudData };

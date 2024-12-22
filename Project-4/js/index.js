@@ -13,7 +13,7 @@ async function fetchData(inputText) {
     });
 
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
 
     const data = await response.json();
@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const userInput = document.getElementById("user-input").value;
 
     // Validate user input
-    if (!userInput.trim()) {
-      outputDiv.textContent = "Input cannot be empty.";
+    if (!userInput.trim() || userInput.length > 500) { // Example input length validation
+      outputDiv.textContent = "Input cannot be empty or too long.";
       outputDiv.style.color = "red";
       return;
     }
