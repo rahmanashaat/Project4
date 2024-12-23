@@ -1,4 +1,4 @@
-import { fetchData } from "../js/api";
+import { fetchData } from "../dist/node_module/src/client/js/api";
 
 // Mocking the fetchData function to test API response handling
 test("fetchData returns correct structure", async () => {
